@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTexttop;
     private EditText editTextbottom;
-    private boolean buttonTap = false;
+    //private boolean buttonTap = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +27,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // ...
-                if(buttonTap){
-                    editTextbottom.setText("Hello");
-                    buttonTap= false;
-                }
-                else{
-                    editTextbottom.setText("World");
-                    buttonTap= true;
-                }
+                String mackytext = "";
+                mackytext = editTexttop.getText().toString();
+                mackytext = breakthrough(mackytext);
+                editTextbottom.setText(mackytext);
+
+//                if(buttonTap){
+//                    editTexttop.setText("あります");
+//                    editTextbottom.setText("");
+//                    buttonTap= false;
+//                }
+//                else{
+//                    editTexttop.setText("");
+//                    editTextbottom.setText("まいか");
+//                    buttonTap= true;
+//                }
             }
         });
+    }
+
+    private String breakthrough(String mackytext) {
+        String str;
+        str = mackytext.replace("ます", "ますまいか");
+        str = str.replace("です", "ですぞ");
+        str = str.replace("でした", "でしたぞ");
+        str = str.replace("ました", "ましたぞ");
+        str = str.replace("さい", "さいですぞ");
+        return str;
     }
 }
